@@ -14,8 +14,6 @@
 '''
 import requests
 import re
-from bs4 import BeautifulSoup
-import json
 from lxml import etree
 
 #获取iframe，拿到m3u8文件
