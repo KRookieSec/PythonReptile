@@ -147,7 +147,7 @@ def main(url):
     #1、拿到主页面的页面源代码，m3u8的链接
     first_m3u8_url = get_iframe_src(url)
     #2、下载第一层m3u8文件
-    #download_m3u8_file(first_m3u8_url,"越狱第一季第一集first_m3u8.txt")
+    download_m3u8_file(first_m3u8_url,"越狱第一季第一集first_m3u8.txt")
     #3、下载第二层m3u8文件
     #读取第一层m3u8文件
     with open("越狱/越狱第一季第一集first_m3u8.txt",mode='r',encoding="utf-8") as f:
@@ -162,12 +162,12 @@ def main(url):
                 second_m3u8_url = first_m3u8_url.split("/20200901")[0] + line 
                 
                 #下载第二层m3u8文件
-                #download_m3u8_file(second_m3u8_url,"越狱第一季第一集_second_m3u8.txt")
+                download_m3u8_file(second_m3u8_url,"越狱第一季第一集_second_m3u8.txt")
                 print("第二层m3u8文件下载完毕。")
     
     #4、下载视频
     #异步协程
-    #asyncio.run(aio_download(second_m3u8_url))
+    asyncio.run(aio_download(second_m3u8_url))
     #5、拿到密钥
     #获取密钥链接
     line_url = is_key("越狱第一季第一集_second_m3u8.txt")
@@ -175,7 +175,7 @@ def main(url):
     key_url = line_url + "/hls/key.key"
     key = get_key(key_url).encode("utf-8")
     #解密
-    #asyncio.run(aio_dec(key))
+    asyncio.run(aio_dec(key))
     #6、合并ts文件为mp4文件
     merge_ts()
 
