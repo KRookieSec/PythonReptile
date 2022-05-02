@@ -1,0 +1,3 @@
+# PythonReptile
+Python爬虫示例
+使用Python的requests库发起请求，使用Python的parsel库解析数据
